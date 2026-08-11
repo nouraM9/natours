@@ -36,6 +36,7 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
-    "eslint": "^9.10.0"
+    "eslint": "^9.10.0",
+    "parcel": "^2.16.4"
   }
 }
