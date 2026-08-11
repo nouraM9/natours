@@ -4,10 +4,8 @@
   "description": "Learing nodejs, express and mongoDB",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js",
-    "watch:js": "parcel  ./public/js/index.js",
-    "build:js": "parcel  ./public/js/index.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "author": "Noura Ali",
   "license": "ISC",
