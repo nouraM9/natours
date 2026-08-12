@@ -8,16 +8,22 @@ process.on('uncaughtException', (err) => {
   console.log(err.name, err.message);
 });
 // Load environment variables from .env file
-dotenv.config({ path: './.env' });
-
+// dotenv.config({ path: './.env' }); // thuis only locally
+dotenv.config();
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD,
 );
 
-mongoose.connect(DB).then(() => {
-  console.log('DB connection successful');
-});
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log('DB connection successful');
+  })
+  .catch((err) => {
+    console.log('❌ DB connection failed');
+    console.log(err);
+  });
 
 // Starting the server
 const port = process.env.PORT || 3000;
