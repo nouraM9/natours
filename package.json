@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "build:js": "echo 'No build required for this Express application'"
   },
   "author": "Noura Ali",
   "license": "ISC",
