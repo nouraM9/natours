@@ -1,5 +1,4 @@
-dotenv.config({ path: './.env' });
-
+dotenv.config();
 const stripe = Stripe(
   'pk_test_51PyBa32N7aSVWMclnz2UOAh90YOGJMh4FUS4OK6BUU4tHQ2gIthcKEtSffJuP4FGKAmKdG96ykKstNis1tksdZRt00yBXgAQG7',
 );
