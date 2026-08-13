@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+// Load environment variables from .env file
+dotenv.config();
+// dotenv.config({ path: './.env' }); // thuis only locally
 const app = require('./app');
 
 // Handling uncaught exceptions
@@ -11,9 +14,6 @@ process.on('uncaughtException', (err) => {
   console.log(err.name, err.message);
 });
 
-// Load environment variables from .env file
-// dotenv.config({ path: './.env' }); // thuis only locally
-dotenv.config();
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD,
