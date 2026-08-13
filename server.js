@@ -3,13 +3,13 @@ const dotenv = require('dotenv');
 const app = require('./app');
 
 // Handling uncaught exceptions
+
+console.log('DATABASE EXISTS:', !!process.env.DATABASE);
+console.log('PASSWORD EXISTS:', !!process.env.DATABASE_PASSWORD);
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥');
   console.log(err.name, err.message);
 });
-
-console.log('DATABASE EXISTS:', !!process.env.DATABASE);
-console.log('PASSWORD EXISTS:', !!process.env.DATABASE_PASSWORD);
 
 // Load environment variables from .env file
 // dotenv.config({ path: './.env' }); // thuis only locally
