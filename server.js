@@ -7,15 +7,15 @@ const app = require('./app');
 
 // Handling uncaught exceptions
 
-console.log('DATABASE EXISTS:', !!process.env.MONGODB_URI);
+console.log('DATABASE EXISTS:', !!process.env.DATABASE);
 console.log('PASSWORD EXISTS:', !!process.env.DATABASE_PASSWORD);
-console.log('DATABASE HOST:', process.env.MONGODB_URI?.split('@')[1]);
+console.log('DATABASE HOST:', process.env.DATABASE?.split('@')[1]);
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥');
   console.log(err.name, err.message);
 });
 
-const DB = process.env.MONGODB_URI.replace(
+const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD,
 );
