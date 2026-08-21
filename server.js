@@ -9,6 +9,7 @@ const app = require('./app');
 
 console.log('DATABASE EXISTS:', !!process.env.DATABASE);
 console.log('PASSWORD EXISTS:', !!process.env.DATABASE_PASSWORD);
+console.log('DATABASE HOST:', process.env.DATABASE?.split('@')[1]);
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥');
   console.log(err.name, err.message);
@@ -19,6 +20,18 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD,
 );
 
+mongoose.set('bufferCommands', false); // fail fast instead of buffering 10s
+mongoose.set('debug', process.env.NODE_ENV === 'development');
+
+mongoose.connection.on('error', (err) => {
+  console.log('❌ Mongoose connection error:', err);
+});
+mongoose.connection.on('disconnected', () => {
+  console.log('⚠️ Mongoose disconnected');
+});
+mongoose.connection.on('reconnected', () => {
+  console.log('✅ Mongoose reconnected');
+});
 mongoose
   .connect(DB)
   .then(() => {
